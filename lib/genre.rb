@@ -28,4 +28,10 @@ class Genre
     genre
   end
 
+  def artists
+    songs.collect do |song|
+      song.artist
+    end.uniq
+  end
+
 end
