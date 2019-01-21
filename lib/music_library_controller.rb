@@ -5,9 +5,9 @@ class MusicLibraryController
   end
 
   def call
-    i = nil
+    i = ""
 
-    while i != nil
+    while i != "exit"
 
       puts "Welcome to your music library!"
       puts "To list all of your songs, enter 'list songs'."
@@ -20,6 +20,20 @@ class MusicLibraryController
       puts "What would you like to do?"
 
       i = gets.chomp
+
+      case i
+      when "list songs"
+        list_songs
+      end
+
+      def list_songs
+        Song.all.sort do |a, b|
+          a.name <=> b.name
+        end.each.with_index(1) do |song, index|
+          puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+        end
+      end
+
 
     end
 
