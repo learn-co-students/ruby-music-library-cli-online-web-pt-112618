@@ -1,5 +1,5 @@
 class MusicImporter
-
+@@all=[]
 
 
   attr_accessor :path
@@ -15,7 +15,19 @@ end
 
   def import
 
-  self.files.each{|file| Song.create_from_filename(file)}
+  files.each do |file|
+    Song.create_from_filename(file)
+  #  puts "#{b.name}"
+
+  end
+
+
+    end
+
+
+def self.all
+@@all
+
 end
 
 end
