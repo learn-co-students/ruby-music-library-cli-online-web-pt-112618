@@ -6,6 +6,7 @@ class MusicImporter
 
   def initialize(file_path)
     @path = file_path
+    @songs=[]
   end
 
   def files
@@ -14,14 +15,15 @@ class MusicImporter
 end
 
   def import
-
+#b=[]
   files.each do |file|
-    Song.create_from_filename(file)
-  #  puts "#{b.name}"
-
+    a=Song.create_from_filename(file)
+  #  puts "#{a.name}"
+#puts "#{a.name}"
+@songs<<a
   end
 
-
+@songs
     end
 
 

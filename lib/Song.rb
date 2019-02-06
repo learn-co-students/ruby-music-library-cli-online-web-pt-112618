@@ -12,6 +12,7 @@ self.genre=genre if genre!=nil
   def self.create(name, artist=nil, genre=nil)
     a=Song.new(name,artist,genre)
 #@@all<<a
+
 return a
 end
 
@@ -30,15 +31,17 @@ def self.new_from_filename(filename)
   genre_name=(array[2].chomp(".mp3"))
   genre=Genre.find_or_create_by_name(genre_name)
   new_song=Song.new(title,artist,genre)
-
+#p
 return new_song
 end
 
 
 def self.create_from_filename(filename)
 
-    a=self.new_from_filename(filename)
-    self.all<<a
+    a=Song.new_from_filename(filename)
+#puts "#{a.name}"
+
+return a
 
   end
 

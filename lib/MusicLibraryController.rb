@@ -3,15 +3,21 @@ class MusicLibraryController
 def initialize(path = "./db/mp3s")
 
   importer=MusicImporter.new(path)
-  importer.import
-@songs=MusicImporter.all
+
+  @songs=importer.import
+#@songs=[]
 end
 def list_songs
 
+  #ar=@songs
+@songs.sort! {|a,b| a.name.downcase <=> b.name.downcase}
+i=0
 @songs.each do |a|
- puts "#{a}"
+ puts "#{i+1}. #{a.artist.name} - #{a.name} - #{a.genre.name}"
+ i+=1
  end
-end
+ end
+
 
 
 def call
