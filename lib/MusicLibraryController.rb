@@ -25,10 +25,30 @@ def list_artists
   puts "#{i+1}. #{a.name}"
   i+=1
   end
+
  end
 
 
 def list_songs_by_artist
+  input=""
+  #while input!="exit"
+  puts "Please enter the name of an artist:"
+  input=gets.strip
+
+  if input!=""
+
+   i=0
+   @songs1=Song.all
+result=  @songs1.select { |song1| song1.artist.name == input}
+if result!=nil
+  result.sort! {|a,b| a.name.downcase <=> b.name.downcase}
+  result.each do |song1|
+      puts "#{i+1}. #{song1.name} - #{song1.genre.name}"
+      i+=1
+#  end
+   end
+end
+end
 end
  def list_genres
 
