@@ -103,6 +103,21 @@ end
   end
   end
 
+def play_song
+#  list_songs
+ @songs.sort! {|a,b| a.name.downcase <=> b.name.downcase}
+  input=""
+  #while input!="exit"
+  puts "Which song number would you like to play?"
+  input=gets.strip
+num=input.to_i
+  if (num>=1) && (num <@songs.length)
+
+a=@songs[num-1]
+  puts  "Playing #{a.name} by #{a.artist.name}"
+end
+end
+
 def call
   input=""
   while input!="exit"
@@ -123,13 +138,13 @@ when "list songs"
 when "list artists"
   list_artists
 when "list genres"
-  genres
+  list_genres
 when "list artist"
-  list artist
+  list_songs_by_artist
 when "list genre"
-  list genre
+  list_songs_by_genre
 when "play song"
-  play song
+  play_song
 end
 end
 end
